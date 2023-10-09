@@ -25,7 +25,7 @@ export function Header() {
             </Text>
           </div>
 
-          <Badge size="md" color="blue">
+          <Badge size="md" color={user.role==="admin"?"red":"blue"}>
             {user.role} | {user.email}
           </Badge>
           <Group visibleFrom="sm">
