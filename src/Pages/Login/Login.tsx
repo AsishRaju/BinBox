@@ -113,6 +113,13 @@ export function Login() {
       },
       onFailure: (err) => {
         console.log("onFailure", err);
+         toast.error(
+          <Text fw={"700"} c={"#e74c3c"}>
+            User not found!
+          </Text>
+        );
+        setLogInLoading(false);
+
       },
     });
   };
@@ -159,14 +166,6 @@ export function Login() {
               size="sm"
               component="button"
               onClick={() => {
-                toast.success(
-                  <>
-                    <Text fw={"700"} c={"green"}>
-                      Account Verified
-                    </Text>
-                    <p>Now Log in to your account</p>
-                  </>
-                );
                 setIsSignUpClicked(false);
               }}
             >
