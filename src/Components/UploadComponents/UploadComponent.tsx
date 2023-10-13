@@ -117,7 +117,14 @@ export function UploadComponent({ fileUploadedSignal, isUpdate = false, fileDesc
             setFile(files);
           }}
           disabled={fileAdded}
-          onReject={(files) => console.log("rejected files", files)}
+          onReject={(files) => {
+            console.log("rejected files", files)
+            toast.error(
+              <Text fw={"700"} c={"#e74c3c"}>
+                File size greater than 10mb
+              </Text>
+            );
+        }}
           maxSize={10 * 1024 ** 2}
           accept={[...IMAGE_MIME_TYPE, ...PDF_MIME_TYPE, ...MS_WORD_MIME_TYPE, ...MS_EXCEL_MIME_TYPE, ...MS_POWERPOINT_MIME_TYPE]}
         >
