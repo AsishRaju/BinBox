@@ -21,6 +21,7 @@ interface Props {
     fileName: string;
     fileDesc: string;
     filePath: string;
+    name: string;
   }[];
   fileUploadedSignal: () => void;
 }
@@ -36,6 +37,7 @@ export function FilesList({ list, fileUploadedSignal, listLoading, setListLoadin
     fileName: "",
     fileDesc: "",
     filePath: "",
+    name: ""
   });
 
   const processDelete = async (fileKey: string, bbkey: string) => {
@@ -71,6 +73,9 @@ export function FilesList({ list, fileUploadedSignal, listLoading, setListLoadin
 
   const rows = list.map((element) => (
     <Table.Tr key={element.id}>
+      <Table.Td>
+        <Skeleton visible={listLoading}>{element.name}</Skeleton>
+      </Table.Td>
       <Table.Td>
         <Skeleton visible={listLoading}>{element.userEmail}</Skeleton>
       </Table.Td>
@@ -142,6 +147,7 @@ export function FilesList({ list, fileUploadedSignal, listLoading, setListLoadin
         <Table.Thead>
           <Table.Tr>
             <Table.Th>Uploaded By</Table.Th>
+            <Table.Th>Email</Table.Th>
             <Table.Th>Uploaded On</Table.Th>
             <Table.Th>Last Modified</Table.Th>
             <Table.Th>File Name</Table.Th>

@@ -51,7 +51,7 @@ export function UploadComponent({ fileUploadedSignal, isUpdate = false, fileDesc
       let dbResponse;
       if (file[0]?.path && fileUplaodResult?.fileKey && fileUplaodResult?.fileName) {
         if (!isUpdate) {
-          dbResponse = await addFileToDB(fileUplaodResult.fileKey, fileUplaodResult.fileName, fileDesc, user.id, user.email);
+          dbResponse = await addFileToDB(fileUplaodResult.fileKey, fileUplaodResult.fileName, fileDesc, user.id, user.email,user.firstName,user.lastName);
         } else {
           dbResponse = await updateFileToDB(fileUplaodResult.fileKey, bbkey, file[0].path, fileDesc);
         }

@@ -45,7 +45,7 @@ const fileUploadHandler = async (file: FileWithPath, userId: string) => {
   }
 };
 
-const addFileToDB = async (fileKey: string, fileName: string, fileDesc: string, userId: string, userEmail: string) => {
+const addFileToDB = async (fileKey: string, fileName: string, fileDesc: string, userId: string, userEmail: string,firstName:string,lastName:string) => {
   try {
     const body = {
       fileKey,
@@ -53,6 +53,9 @@ const addFileToDB = async (fileKey: string, fileName: string, fileDesc: string, 
       fileName,
       userId,
       userEmail,
+      firstName,
+      lastName
+      
     };
 
     const response = await axios.post(`https://d37729g2srnlx.cloudfront.net/prod/updateDb`, body, {
@@ -113,6 +116,7 @@ const getFilesList = async (userId: string) => {
           fileName: eachData["fileName"],
           fileDesc: eachData["fileDesc"],
           filePath: eachData["fileKey"],
+          name: eachData["firstName"]+" "+eachData['lastName']
         };
       });
     }
